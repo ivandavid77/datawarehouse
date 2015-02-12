@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+$Id: //open/mondrian/webapp/WEB-INF/web-jpivot.xml#15 $
+
+This software is subject to the terms of the Eclipse Public License v1.0
+Agreement, available at the following URL:
+http://www.eclipse.org/legal/epl-v10.html.
+(C) Copyright 2003-2009 Julian Hyde and others
+All Rights Reserved.
+You must accept the terms of that agreement to use this software.
+-->
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <servlet>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <servlet-class>mondrian.xmla.impl.MondrianXmlaServlet</servlet-class>
+    <init-param>
+      <param-name>CharacterEncoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <url-pattern>/xmla</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+</web-app>

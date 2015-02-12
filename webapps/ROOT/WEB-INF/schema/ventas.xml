@@ -1,0 +1,54 @@
+<Schema name="ventas">
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="DateDim">
+    <Hierarchy visible="true" hasAll="true" allMemberName="Todas las fechas" primaryKey="id">
+      <Table name="dimension_fecha">
+      </Table>
+      <Level name="Year" visible="true" column="the_year" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Month" visible="true" column="month_of_year" nameColumn="yyyymm" ordinalColumn="month_of_year" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+      </Level>
+      <Level name="Day" visible="true" column="day_of_month" ordinalColumn="day_of_month" type="Numeric" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Ventas" visible="true" cache="true" enabled="true">
+    <Table name="fact_ventas">
+    </Table>
+    <DimensionUsage source="DateDim" name="DateDim" visible="true" foreignKey="id_fecha" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_sucursal" highCardinality="false" name="StoreDim">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Todas las tiendas" primaryKey="id">
+        <Table name="dimension_sucursal">
+        </Table>
+        <Level name="Estado" visible="true" table="dimension_sucursal" column="Estado de sucursal" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Ciudad" visible="true" table="dimension_sucursal" column="Ciudad de sucursal" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Colonia" visible="true" table="dimension_sucursal" column="Colonia de sucursal" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_producto" highCardinality="false" name="ProductDim">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Todos los productos" primaryKey="id">
+        <Table name="dimension_producto">
+        </Table>
+        <Level name="Categoria" visible="true" table="dimension_producto" column="Descripcion de categoria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Producto" visible="true" table="dimension_producto" column="Descripcion de producto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Ventas" column="Precio de venta" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Comisiones" column="Costo por comision a estilista" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Materiales" column="Costo por materiales utilizados" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="CIF" column="Costos indirectos" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Ganancias" column="Ganancia por venta" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Unidades" column="Cantidad vendida" datatype="Integer" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
