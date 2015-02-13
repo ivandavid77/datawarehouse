@@ -1,0 +1,16 @@
+CREATE TABLE `corporativo_pagares` (
+  `folio_venta` int(9) NOT NULL default '0',
+  `numero_pagare` int(3) NOT NULL default '0',
+  `saldo_pagare` double(10,2) default NULL,
+  `interes_pagado` double(10,2) default NULL,
+  `fecha_vencimiento` date default NULL,
+  `fecha_pago` date default NULL,
+  `dias_atraso` int(3) default NULL,
+  `quincena_cobro` int(2) unsigned default NULL,
+  PRIMARY KEY  (`folio_venta`,`numero_pagare`),
+  KEY `folio_venta` (`folio_venta`),
+  KEY `numero_pagare` (`numero_pagare`),
+  KEY `saldo_pagare` (`saldo_pagare`),
+  KEY `fecha_pago` (`fecha_pago`),
+  KEY `fecha_vencimiento` (`fecha_vencimiento`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

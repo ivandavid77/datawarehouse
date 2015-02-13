@@ -1,0 +1,18 @@
+CREATE TABLE `corporativo_baja` (
+  `folio_venta` int(9) unsigned NOT NULL default '0',
+  `fecha` date default NULL,
+  `causa` char(3) default NULL,
+  `saldo` double(10,2) default '0.00',
+  `devolucion_enganche` double(10,2) default '0.00',
+  `devolucion_resto_enganche` double(10,2) default '0.00',
+  `devolucion_intereses` double(10,2) default '0.00',
+  `devolucion_capital` double(10,2) default '0.00',
+  `clave_capturista` int(5) NOT NULL default '0',
+  `folio_cancelacion` int(9) unsigned default '0',
+  `caja` varchar(6) default NULL,
+  `cajera` int(5) unsigned default NULL,
+  KEY `fecha` (`fecha`),
+  KEY `causa` (`causa`),
+  KEY `clave_capturista` (`clave_capturista`),
+  KEY `folio_venta` (`folio_venta`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

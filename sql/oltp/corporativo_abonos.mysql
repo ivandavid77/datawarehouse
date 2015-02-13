@@ -1,0 +1,21 @@
+CREATE TABLE `corporativo_abonos` (
+  `folio_venta` int(9) NOT NULL default '0',
+  `numero_pagare` int(3) NOT NULL default '0',
+  `numero_abono` int(3) NOT NULL default '0',
+  `cantidad_abono` double(10,2) default NULL,
+  `intereses` double(10,2) default NULL,
+  `fecha_abono` date default NULL,
+  `punto_recepcion` varchar(6) default NULL,
+  `capturista` int(5) default NULL,
+  `folio_recibo` varchar(8) default NULL,
+  `responsable_cuenta` varchar(8) default NULL,
+  `hora_cobro` time default NULL,
+  `estado` tinyint(1) unsigned default '0',
+  KEY `folio_venta` (`folio_venta`),
+  KEY `numero_pagare` (`numero_pagare`),
+  KEY `fecha_abono` (`fecha_abono`),
+  KEY `capturista` (`capturista`),
+  KEY `punto_recepcion` (`punto_recepcion`),
+  KEY `responsable_cuenta` (`responsable_cuenta`),
+  KEY `folio_recibo` (`folio_recibo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

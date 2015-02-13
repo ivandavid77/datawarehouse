@@ -1,0 +1,20 @@
+CREATE TABLE `corporativo_vendedores` (
+  `clave_vendedor` varchar(5) NOT NULL default '',
+  `nombre` varchar(20) default NULL,
+  `paterno` varchar(20) default NULL,
+  `materno` varchar(20) default NULL,
+  `clave_muebleria` varchar(4) default NULL,
+  `clave_muebleria_ant` varchar(4) default NULL,
+  `fecha_ingreso` date default '0000-00-00',
+  `porcentaje_comision` double(10,2) default '0.05',
+  `clave_nomina` varchar(10) default NULL,
+  `vigente` tinyint(2) unsigned default '1',
+  `tipo_v` char(1) default NULL,
+  `comision_solicitud` double(3,2) default '0.00',
+  `participa_comision` tinyint(1) unsigned default '0',
+  `fecha_vigencia` date default '0000-00-00',
+  PRIMARY KEY  (`clave_vendedor`),
+  KEY `clave_vendedor` (`clave_vendedor`),
+  KEY `nomina` (`clave_nomina`),
+  KEY `clave_muebleria` (`clave_muebleria`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
